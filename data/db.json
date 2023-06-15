@@ -11,8 +11,8 @@
       "id": 2
     },
     {
-      "name": "",
-      "description": "",
+      "name": "khgckuty",
+      "description": "hsdzgb",
       "id": 3
     }
   ],
@@ -46,13 +46,6 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
-    },
-    {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
-      "id": 7
     }
   ]
 }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api/index";
-import CreateDeck from "./CreateDeck";
 
 function ListDecks() {
   const history = useHistory();
   const [deckList, setDeckList] = useState([]);
+  const {deckId} = useParams()
 
   useEffect(() => {
     async function fetchList() {
@@ -16,23 +16,27 @@ function ListDecks() {
   }, []);
 
   async function handleDelete(deckId) {
-    if (window.confirm("Are you sure you want to delete this deck?")) {
+    if (window.confirm("Are you sure you want to delete?")) {
       try {
         await deleteDeck(deckId);
         setDeckList((decks) => decks.filter((deck) => deck.id !== deckId));
-        history.push("/decks");
-      } catch (error) {
-        console.log(error);
+        history.push("/");
+      } catch (e) {
+        console.log(e);
       }
     }
   }
 
   return (
     <>
-        <CreateDeck />
-      {deckList &&
-        deckList.map((list) => (
-          <div className="card" key={list.id}>
+      <div>
+        <Link to="/decks/new" className="btn btn-primary mb-3">
+          Create Deck
+        </Link>
+      </div>
+      {deckList.map((list) => (
+        <div className="card-container">
+          <div className="card mb-4" key={list.id}>
             <div className="card-body">
               <h3 className="card-title">
                 {list.name}
@@ -53,15 +57,22 @@ function ListDecks() {
               >
                 Study
               </Link>
+              <Link
+                to={`/decks/${deckId}/edit`}
+                className="btn btn-outline-dark mt-3 ml-2"
+              >
+                Edit
+              </Link>
               <button
-                className="btn btn-outline-danger ml-2 mt-3"
+                className="btn btn-outline-danger mt-3 float-right mr-3"
                 onClick={() => handleDelete(list.id)}
               >
                 Delete
               </button>
             </div>
           </div>
-        ))}
+        </div>
+      ))}
     </>
   );
 }

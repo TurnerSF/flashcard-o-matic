@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { createDeck } from "../utils/api/index";
 
-function CreateDeck({ deckList }) {
+function CreateNewDeck() {
   const history = useHistory();
   const initialData = {
     name: "",
@@ -10,7 +10,6 @@ function CreateDeck({ deckList }) {
   };
 
   const [createNewDeck, setCreateNewDeck] = useState(initialData);
-  const [showForm, setShowForm] = useState(false);
 
   function handleChange(event) {
     setCreateNewDeck({
@@ -29,8 +28,8 @@ function CreateDeck({ deckList }) {
     try {
       await createDeck(newDeck);
       history.push("/");
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -58,12 +57,12 @@ function CreateDeck({ deckList }) {
               onChange={handleChange}
             />
           </div>
-          <button
+          <Link
+            to="/"
             className="btn btn-outline-primary mb-3 mt-3 mr-2"
-            onClick={() => setShowForm(!showForm)}
           >
             Cancel
-          </button>
+          </Link>
           <button type="submit" className="btn btn-outline-primary mb-3 mt-3">
             Create Deck
           </button>
@@ -72,4 +71,4 @@ function CreateDeck({ deckList }) {
   );
 }
 
-export default CreateDeck;
+export default CreateNewDeck;
