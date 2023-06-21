@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+
 function StudyCards({ deck }) {
   const [flip, setFlip] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
@@ -11,7 +12,8 @@ function StudyCards({ deck }) {
     setFlip(!flip);
   }
 
-  const handleNextCard = () => {
+
+  function handleNextCard() {
     const isLastCard = cardIndex === cards.length - 1;
   
     if (isLastCard) {
