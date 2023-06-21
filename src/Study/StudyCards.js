@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-
 function StudyCards({ deck }) {
   const [flip, setFlip] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
@@ -12,15 +11,14 @@ function StudyCards({ deck }) {
     setFlip(!flip);
   }
 
-
   function handleNextCard() {
     const isLastCard = cardIndex === cards.length - 1;
-  
+
     if (isLastCard) {
       const shouldRestart = window.confirm(
         "Restart cards? Click 'cancel' to return to the home page"
       );
-  
+
       if (shouldRestart) {
         setCardIndex(0);
         setFlip(false);
@@ -30,42 +28,35 @@ function StudyCards({ deck }) {
       setCardIndex(cardIndex + 1);
       setFlip(false);
     }
-  };
+  }
+  const currentCard = cards[cardIndex];
 
   if (cards)
     return (
-      <>
-        <div className="card">
-          <div className="card-body border border-primary">
-            <h3>Study: {deck.name}</h3>
-            <h3 className="">
-              Card {cardIndex + 1} of {cards.length}
-            </h3>
-            <h3 className="">
-              {" "}
-              {flip ? cards[cardIndex].back : cards[cardIndex].front}{" "}
-            </h3>
+      <div className="card">
+        <div className="card-body border border-primary">
+          <h3>Study: {deck.name}</h3>
+          <h3>
+            Card {cardIndex + 1} of {cards.length}
+          </h3>
+          <h3>{flip ? currentCard.back : currentCard.front}</h3>
+          <button
+            className="btn btn-outline-dark btn-lg mt-5"
+            onClick={handleCardFlip}
+          >
+            Flip
+          </button>
+          {flip && (
             <button
-              className="btn btn-outline-dark btn-lg mt-5"
-              onClick={handleCardFlip}
+              className="btn btn-outline-primary btn-lg mt-5 ml-3"
+              onClick={handleNextCard}
             >
-              Flip
+              Next
             </button>
-            {flip ? (
-              <button
-                className="btn btn-outline-primary btn-lg mt-5 ml-3 "
-                onClick={() => handleNextCard()}
-              >
-                Next
-              </button>
-            ) : null}
-          </div>
+          )}
         </div>
-      </>
+      </div>
     );
-  else {
-    return <p>Loading...</p>;
-  }
 }
 
 export default StudyCards;
