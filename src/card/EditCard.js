@@ -28,7 +28,7 @@ function EditCard() {
     history.goBack();
   }
 
-  console.log("card:", card);
+  
   const editForm =
     deck.id && card ? (
       <CardForm
