@@ -12,8 +12,8 @@ function NotEnough({ deck }) {
           <h3 className="card-container">Study: {deck.name}</h3>
           <h2 className="mt-3">Not enough cards</h2>
           <h4 className=" mt-2 ">
-            You need 3 cards to study. there are only {cards.length} cards in
-            this deck. Add more cards to study.
+            There are only {cards.length} cards in this deck. You Need at least
+            3 to study. Add more cards to study.
           </h4>
         </div>
         <div>
