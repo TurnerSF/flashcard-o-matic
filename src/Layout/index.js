@@ -6,6 +6,9 @@ import { Route, Switch } from "react-router-dom";
 import CreateDeck from "../deck/CreateNewDeck";
 import ShowDeck from "../deck/ShowDeck";
 import AddCard from "../card/AddCard";
+import EditDeck from "../deck/EditDeck";
+import EditCard from "../card/EditCard"
+import Study from "../study/Study";
 
 function Layout() {
   return (
@@ -20,11 +23,20 @@ function Layout() {
           <Route path="/decks/new" exact>
             <CreateDeck />
           </Route>
-          <Route path="/decks/:deckId/cards/new">
+          <Route path="/decks/:deckId/cards/new" exact>
             <AddCard />
           </Route>
-          <Route path="/decks/:deckId">
+          <Route path="/decks/:deckId" exact>
             <ShowDeck />
+          </Route>
+          <Route path="/decks/:deckId/edit" exact>
+            <EditDeck />
+          </Route>
+          <Route path="/decks/:deckId/cards/:cardId/edit">
+            <EditCard />
+          </Route>
+          <Route path="/decks/:deckId/study">
+            <Study />
           </Route>
           <Route path="*">
             <NotFound />

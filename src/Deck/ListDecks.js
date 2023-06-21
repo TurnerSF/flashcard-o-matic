@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api/index";
 
 function ListDecks() {
   const history = useHistory();
   const [deckList, setDeckList] = useState([]);
-  const {deckId} = useParams()
 
   useEffect(() => {
     async function fetchList() {
@@ -35,8 +34,8 @@ function ListDecks() {
         </Link>
       </div>
       {deckList.map((list) => (
-        <div className="card-container">
-          <div className="card mb-4" key={list.id}>
+        <div className="card-container" key={list.id}>
+          <div className="card mb-4 border border-primary">
             <div className="card-body">
               <h3 className="card-title">
                 {list.name}
@@ -58,7 +57,7 @@ function ListDecks() {
                 Study
               </Link>
               <Link
-                to={`/decks/${deckId}/edit`}
+                to={`/decks/${list.id}/edit`}
                 className="btn btn-outline-dark mt-3 ml-2"
               >
                 Edit

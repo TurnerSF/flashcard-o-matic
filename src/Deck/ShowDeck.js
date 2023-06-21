@@ -64,7 +64,7 @@ function ShowDeck() {
           <div className="card-container">
             <h1>Cards</h1>
             {cards.map((card) => (
-              <div key={card.id} className="card mb-5">
+              <div key={card.id} className="card border border-primary mb-5 p-4">
                 <div className="card-title pl-4 pt-2">
                   <h3>{card.front}</h3>
                   <div className="card-body pl-1 pb-1 pt-2">
@@ -74,12 +74,12 @@ function ShowDeck() {
                 <div className="card-footer pb-3">
                   <Link
                     to={`/decks/${deckId}/cards/${card.id}/edit`}
-                    className="btn btn-outline-dark ml-1"
+                    className="btn btn-outline-dark ml-1 mt-2"
                   >
                     Edit
                   </Link>
                   <button
-                    className="btn btn-outline-danger float-right"
+                    className="btn btn-outline-danger float-right mt-2"
                     onClick={() => handleDelete(card.id)}
                   >
                     Delete
