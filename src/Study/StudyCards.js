@@ -11,22 +11,24 @@ function StudyCards({ deck }) {
     setFlip(!flip);
   }
 
-  function handleNextDeck() {
-    if (cardIndex < cards.length - 1) {
-      setCardIndex((i) => (i = i + 1));
-      setFlip(false);
-    } else {
-      if (
-        window.confirm(
-          "Restart cards?\n\nClick 'cancel' to return to the home page"
-        )
-      ) {
+  const handleNextCard = () => {
+    const isLastCard = cardIndex === cards.length - 1;
+  
+    if (isLastCard) {
+      const shouldRestart = window.confirm(
+        "Restart cards? Click 'cancel' to return to the home page"
+      );
+  
+      if (shouldRestart) {
         setCardIndex(0);
         setFlip(false);
         history.push("/");
       }
+    } else {
+      setCardIndex(cardIndex + 1);
+      setFlip(false);
     }
-  }
+  };
 
   if (cards)
     return (
@@ -50,7 +52,7 @@ function StudyCards({ deck }) {
             {flip ? (
               <button
                 className="btn btn-outline-primary btn-lg mt-5 ml-3 "
-                onClick={() => handleNextDeck()}
+                onClick={() => handleNextCard()}
               >
                 Next
               </button>
