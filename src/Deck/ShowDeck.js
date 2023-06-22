@@ -6,13 +6,14 @@ function ShowDeck() {
   const [viewDeck, setViewDeck] = useState([]);
   const { deckId } = useParams();
 
-  useEffect(() => {
-    async function fetchDeck(deckId) {
-      const data = await readDeck(deckId);
-      setViewDeck(data);
-    }
-    fetchDeck(deckId);
-  }, [deckId]);
+  useEffect(() => fetchDeck(deckId), [deckId]);
+
+  
+  async function fetchDeck(deckId) {
+    const data = await readDeck(deckId);
+    setViewDeck(data);
+  }
+
 
   async function handleDelete(cardId) {
     if (window.confirm("Are you sure you want to delete this card")) {
@@ -41,9 +42,7 @@ function ShowDeck() {
             <li className="breadcrumb-item">
               <Link to={`/decks/${deckId}`}>{viewDeck.name}</Link>
             </li>
-            <li className="breadcrumb-item active">
-                View deck
-            </li>
+            <li className="breadcrumb-item active">View deck</li>
           </ol>
           <h1 className="mb-4">{viewDeck.name}</h1>
           <h5>{viewDeck.description}</h5>
@@ -64,7 +63,10 @@ function ShowDeck() {
           <div className="card-container">
             <h1>Cards</h1>
             {cards.map((card) => (
-              <div key={card.id} className="card border border-primary mb-5 p-4">
+              <div
+                key={card.id}
+                className="card border border-primary mb-5 p-4"
+              >
                 <div className="card-title pl-4 pt-2">
                   <h3>{card.front}</h3>
                   <div className="card-body pl-1 pb-1 pt-2">

@@ -6,14 +6,11 @@ function ListDecks() {
   const history = useHistory();
   const [deckList, setDeckList] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => fetchList(), []);
     async function fetchList() {
       const data = await listDecks();
       setDeckList(data);
     }
-    fetchList();
-  }, []);
-
   async function handleDelete(deckId) {
     if (window.confirm("Are you sure you want to delete?")) {
       try {

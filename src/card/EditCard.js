@@ -4,7 +4,6 @@ import { readCard, updateCard, readDeck } from "../utils/api";
 import CardForm from "./CardForm";
 
 function EditCard() {
-
   const [card, setCard] = useState(null);
   const history = useHistory();
   const { cardId, deckId } = useParams();
@@ -12,11 +11,8 @@ function EditCard() {
 
   useEffect(() => {
     readDeck(deckId).then(setDeck);
-  }, [deckId]);
-
-  useEffect(() => {
     readCard(cardId).then(setCard);
-  }, [cardId]);
+  }, [deckId, cardId]);
 
   function handleSubmit(editedCard) {
     updateCard(editedCard)
@@ -28,7 +24,6 @@ function EditCard() {
     history.goBack();
   }
 
-  
   const editForm =
     deck.id && card ? (
       <CardForm
