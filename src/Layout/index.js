@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import ListDecks from "../deck/ListDecks";
+import ListDecks from "../Deck/ListDecks";
 import { Route, Switch, Redirect } from "react-router-dom";
-import CreateDeck from "../deck/CreateNewDeck";
-import ShowDeck from "../deck/ShowDeck";
+import CreateDeck from "../Deck/CreateNewDeck";
+import ShowDeck from "../Deck/ShowDeck";
 import AddCard from "../card/AddCard";
-import EditDeck from "../deck/EditDeck";
+import EditDeck from "../Deck/EditDeck";
 import EditCard from "../card/EditCard";
-import Study from "../study/Study";
+import Study from "../Study/Study";
 
 function Layout() {
   return (
