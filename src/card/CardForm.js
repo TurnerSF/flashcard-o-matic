@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-function CardForm({ onCancel, handleSubmit, initialData = { front: "", back: "" } }) {
+function CardForm({
+  onCancel,
+  handleSubmit,
+  initialData = { front: "", back: "" },
+}) {
   const [card, setCard] = useState(initialData);
 
-  console.log("initial:", initialData)
+  console.log("initial:", initialData);
   function handleCardChange(event) {
     event.preventDefault();
     setCard((edit) => ({
@@ -17,7 +21,7 @@ function CardForm({ onCancel, handleSubmit, initialData = { front: "", back: "" 
     event.stopPropagation();
     handleSubmit(card);
   }
-  console.log(card, "---")
+  console.log(card, "---");
   return (
     <>
       <form onSubmit={handleFinalSubmit} className="card-edit p-5">
@@ -57,15 +61,15 @@ function CardForm({ onCancel, handleSubmit, initialData = { front: "", back: "" 
           <button type="submit" className="btn btn-outline-dark ml-2">
             Submit
           </button>
-          {!card.id &&
-                    <button
-                    type="button"
-                    className="btn btn-outline-dark float-right"
-                    onClick={onCancel}
-                  >
-                    Done
-                  </button>
-          }
+          {!card.id && (
+            <button
+              type="button"
+              className="btn btn-outline-dark float-right"
+              onClick={onCancel}
+            >
+              Done
+            </button>
+          )}
         </fieldset>
       </form>
     </>
