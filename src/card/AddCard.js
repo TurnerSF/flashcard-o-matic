@@ -14,7 +14,7 @@ function AddCard() {
 
   function handleSubmit(card) {
     createCard(deckId, card)
-      .then(() => history.push(`/decks/${deckId}`))
+      .then(() => history.go(0))
       .catch((error) => console.log(error));
   }
 

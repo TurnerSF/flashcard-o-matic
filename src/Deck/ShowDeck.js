@@ -59,6 +59,12 @@ function ShowDeck() {
             >
               Add Card
             </Link>
+            <Link
+              to={`/decks/${deckId}/edit`}
+              className="btn btn-outline-primary ml-2"
+            >
+              Edit
+            </Link>
           </div>
           <div className="card-container">
             <h1>Cards</h1>
