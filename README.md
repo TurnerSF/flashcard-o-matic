@@ -1,25 +1,19 @@
-Hello! This is an app for users that enjoy using flashcards for studying.
+Welcome! This app is designed for users who enjoy utilizing flashcards for their study sessions.
 
-Features:
-View all decks on the dashboard.
-Create new decks.
-Create and add cards to decks.
-Delete decks and cards.
-Edit decks and cards.
-Choose a deck, then study it by viewing the question side and flipping to view the answer on the other side.
 Installation:
-To run locally, clone this repository to your computer or download the zip file.
+To run the app locally, you can either clone this repository to your computer or download the provided zip file.
+Execute the command: npm install.
+Once the installation is complete, run: npm start.
 
-Run: npm install.
-Once installed, run: npm start.
-Technologies:
-HTML
-CSS
-Bootstrap
-JavaScript
-React
-Node
-Express
-Knex
-PostgreSQL
-Feel free to customize the formatting or add more information as needed.
+Key Features:
+
+Explore the dashboard to view all available decks.
+Create new decks to organize your flashcards.
+Add cards to decks effortlessly.
+Efficiently delete both decks and cards.
+Seamlessly edit decks and cards.
+Dive into your chosen deck and study by flipping between the question and answer sides.
+Technologies Utilized:
+HTML, CSS, Bootstrap, JavaScript, React, Node, Express, Knex, and PostgreSQL.
+
+Feel free to customize the formatting or add more information as needed to best suit your needs.
